@@ -69,7 +69,8 @@ jobs:
           POSTGRES_USER: kraken_test
           POSTGRES_PASSWORD: kraken_test_pass
           POSTGRES_DB: kraken_test_db
-        ports: 5432:5432
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd="pg_isready -U kraken_test -d kraken_test_db"
           --health-interval=5s
@@ -78,7 +79,8 @@ jobs:
 
       redis:
         image: redis:7-alpine
-        ports: 6379:6379
+        ports:
+          - 6379:6379
         options: >-
           --health-cmd="redis-cli ping"
           --health-interval=5s
