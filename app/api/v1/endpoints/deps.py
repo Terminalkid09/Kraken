@@ -18,7 +18,7 @@ async def get_current_user(
     db: AsyncSession = Depends(get_db),
 ) -> User:
     # Try cookie first, then Bearer header
-    token_str = token
+    token_str: str | None = token
     if not token_str:
         token_str = request.cookies.get("kraken_token")
     if not token_str:

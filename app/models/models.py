@@ -1,3 +1,4 @@
+from typing import Any
 from sqlalchemy import Column, Integer, String, DateTime, Boolean, Text, Float, ForeignKey, Index
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
@@ -39,9 +40,9 @@ class AttackEvent(Base):
     is_known_threat = Column(Boolean, default=False)
     threat_tags = Column(String(256), nullable=True)
 
-    commands = relationship("AttackCommand", back_populates="event", cascade="all, delete-orphan")
-    credentials = relationship("CredentialAttempt", back_populates="event", cascade="all, delete-orphan")
-    malware_samples = relationship("MalwareSample", back_populates="event", cascade="all, delete-orphan")
+    commands: Any = relationship("AttackCommand", back_populates="event", cascade="all, delete-orphan")
+    credentials: Any = relationship("CredentialAttempt", back_populates="event", cascade="all, delete-orphan")
+    malware_samples: Any = relationship("MalwareSample", back_populates="event", cascade="all, delete-orphan")
 
     __table_args__ = (
         Index("ix_attack_events_ip_sensor", "attacker_ip", "sensor_type"),
@@ -57,7 +58,7 @@ class AttackCommand(Base):
     command = Column(Text, nullable=False)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
 
-    event = relationship("AttackEvent", back_populates="commands")
+    event: Any = relationship("AttackEvent", back_populates="commands")
 
 
 class CredentialAttempt(Base):
@@ -70,7 +71,7 @@ class CredentialAttempt(Base):
     success = Column(Boolean, default=False)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
 
-    event = relationship("AttackEvent", back_populates="credentials")
+    event: Any = relationship("AttackEvent", back_populates="credentials")
 
 
 class MalwareSample(Base):
@@ -84,4 +85,4 @@ class MalwareSample(Base):
     size = Column(Integer, nullable=True)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
 
-    event = relationship("AttackEvent", back_populates="malware_samples")
+    event: Any = relationship("AttackEvent", back_populates="malware_samples")

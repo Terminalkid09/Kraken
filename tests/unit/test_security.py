@@ -4,7 +4,6 @@ from app.core.security import (
 )
 from app.schemas.schemas import SensorEventIn, LoginRequest
 from pydantic import ValidationError
-import jwt
 import time
 
 

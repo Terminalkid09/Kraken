@@ -1,4 +1,3 @@
-import pytest
 from httpx import AsyncClient
 from app.models.models import AttackEvent
 from datetime import datetime, timezone

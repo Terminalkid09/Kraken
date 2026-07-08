@@ -10,7 +10,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.main import app
 from app.db.session import get_db, Base
-from app.db.redis import init_redis, close_redis, get_redis
 from app.core.config import settings
 from app.models.models import User
 from app.core.security import hash_password, create_access_token

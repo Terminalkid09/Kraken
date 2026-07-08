@@ -4,7 +4,6 @@ from unittest.mock import AsyncMock, patch
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
 from app.db.session import Base
-from app.models.models import AttackEvent, CredentialAttempt, AttackCommand
 from app.schemas.schemas import SensorEventIn
 from app.services.attack_service import ingest_sensor_event, get_events, get_dashboard_stats
 from app.services.geoip import GeoIPService
