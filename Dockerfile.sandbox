@@ -1,0 +1,6 @@
+FROM alpine:3.19
+RUN adduser -D -h /home/sandbox sandbox && \
+    apk add --no-cache bash coreutils procps curl
+USER sandbox
+WORKDIR /home/sandbox
+CMD ["/bin/sh"]

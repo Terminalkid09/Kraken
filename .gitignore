@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# Data — contains GeoIP DB, malware samples, logs
+data/
+!data/.gitkeep
+
+# SSL certificates (generated at runtime by nginx entrypoint)
+nginx/ssl/
+!nginx/ssl/.gitkeep
+
+# Test & coverage
+htmlcov/
+.coverage
+.coverage.*
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Docker
+node_modules/
+
+# Temporary test artifacts
+scripts/test_kraken_*
